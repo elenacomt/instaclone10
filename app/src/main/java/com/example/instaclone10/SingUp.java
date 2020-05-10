@@ -30,6 +30,8 @@ public class SingUp extends AppCompatActivity implements View.OnClickListener {
 
     private Button btnGetAllData;
 
+    private Button btnTransition;
+
     private String allKickBoxers;
 
 
@@ -52,6 +54,9 @@ public class SingUp extends AppCompatActivity implements View.OnClickListener {
         txtGetData = findViewById(R.id.txtGetData);
 
         btnGetAllData = findViewById(R.id.btnGetAllData);
+
+        btnTransition = findViewById(R.id.btnNextActivity);
+
 
         txtGetData.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -76,8 +81,12 @@ public class SingUp extends AppCompatActivity implements View.OnClickListener {
             public void onClick(View v) {
 
                 allKickBoxers = "";
-
                 ParseQuery<ParseObject> queryAll = ParseQuery.getQuery("KickBoxer");
+
+                 //queryAll.whereGreaterThan("punchPower", 3000);
+                queryAll.whereGreaterThanOrEqualTo("punchPower", 3000);
+                queryAll.setLimit(1);
+
                 queryAll.findInBackground(new FindCallback<ParseObject>() {
                     @Override
                     public void done(List<ParseObject> objects, ParseException e) {
@@ -101,6 +110,13 @@ public class SingUp extends AppCompatActivity implements View.OnClickListener {
                         }
                     }
                 });
+            }
+        });
+
+        btnTransition.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
             }
         });
     }

@@ -2,6 +2,7 @@ package com.example.instaclone10;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.View;
@@ -66,9 +67,9 @@ public class SingUp extends AppCompatActivity implements View.OnClickListener {
                     @Override
                     public void done(ParseObject object, ParseException e) {
 
-                        if (object != null && e == null)  {
+                        if (object != null && e == null) {
 
-                            txtGetData.setText(object.get("name") + " - " + "Punch Power: " + object.get("punchPower") );
+                            txtGetData.setText(object.get("name") + " - " + "Punch Power: " + object.get("punchPower"));
                         }
                     }
                 });
@@ -83,7 +84,7 @@ public class SingUp extends AppCompatActivity implements View.OnClickListener {
                 allKickBoxers = "";
                 ParseQuery<ParseObject> queryAll = ParseQuery.getQuery("KickBoxer");
 
-                 //queryAll.whereGreaterThan("punchPower", 3000);
+                //queryAll.whereGreaterThan("punchPower", 3000);
                 queryAll.whereGreaterThanOrEqualTo("punchPower", 3000);
                 queryAll.setLimit(1);
 
@@ -96,7 +97,7 @@ public class SingUp extends AppCompatActivity implements View.OnClickListener {
                             if (objects.size() > 0) {
 
                                 for (ParseObject kickBoxer : objects) {
-                                    allKickBoxers = allKickBoxers + kickBoxer.get("name")+ "\n";
+                                    allKickBoxers = allKickBoxers + kickBoxer.get("name") + "\n";
 
                                 }
 
@@ -117,7 +118,11 @@ public class SingUp extends AppCompatActivity implements View.OnClickListener {
             @Override
             public void onClick(View v) {
 
+                Intent intent = new Intent(SingUp.this,
+                        SingUpLoginActivity.class);
+                startActivity(intent);
             }
+
         });
     }
 

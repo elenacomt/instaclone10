@@ -47,9 +47,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
             case R.id.btnLoginActivity:
 
-//                final ParseUser appUser = new ParseUser();
-//                appUser.setEmail(edtLoginEmail.getText().toString());
-//                appUser.setPassword(edtLoginPassword.getText().toString());
 
                 ParseUser.logInInBackground(edtLoginEmail.getText().toString(),
                         edtLoginPassword.getText().toString(),
@@ -62,12 +59,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                                             user.getUsername() + " is Logget in successfully",
                                             Toast.LENGTH_SHORT, FancyToast.SUCCESS,
                                             true).show();
-//                                }   else {
-//                                    FancyToast.makeText(LoginActivity.this,
-//                                            "There was an error:" + e.getMessage(),
-//                                            Toast.LENGTH_LONG, FancyToast.ERROR,
-//                                            true).show();
-                               transitionToSocialMediaActivity();
+                                    transitionToSocialMediaActivity();
                                 }
 
                             }
@@ -84,8 +76,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     private void transitionToSocialMediaActivity() {
 
-        Intent intent = new Intent(LoginActivity.this, SocialMadiaActivity.class);
+        Intent intent = new Intent(LoginActivity.this, SocialMediaActivity.class);
         startActivity(intent);
 
     }
+
 }
